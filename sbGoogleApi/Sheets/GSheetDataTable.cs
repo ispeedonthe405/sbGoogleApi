@@ -120,17 +120,17 @@ namespace sbGoogleApi.Sheets
                 for (int i = 0; i < row1.Values.Count; i++)
                 {
                     ExtendedValue ev_header = row0.Values[i].EffectiveValue;
-                    ExtendedValue ev = row1.Values[i].EffectiveValue;
+                    ExtendedValue ev_data = row1.Values[i].EffectiveValue;
 
-                    if (ev.BoolValue is not null)
+                    if (ev_data.BoolValue is not null)
                     {
                         Table.Columns.Add(ev_header.StringValue, typeof(bool));
                     }
-                    else if (ev.NumberValue is not null)
+                    else if (ev_data.NumberValue is not null)
                     {
                         Table.Columns.Add(ev_header.StringValue, typeof(double));
                     }
-                    else if (ev.StringValue is not null)
+                    else if (ev_data.StringValue is not null)
                     {
                         Table.Columns.Add(ev_header.StringValue, typeof(string));
                     }
