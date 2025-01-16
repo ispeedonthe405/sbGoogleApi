@@ -5,6 +5,8 @@ VisualStudioVersion = 17.12.35707.178 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sbGoogleApi", "sbGoogleApi\sbGoogleApi.csproj", "{BD6BC19C-3A0C-417D-9487-587503DBB18D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestCase.WPF", "TestCase.WPF\TestCase.WPF.csproj", "{AC146042-25F8-4B86-A888-662B87DECAF1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{BD6BC19C-3A0C-417D-9487-587503DBB18D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD6BC19C-3A0C-417D-9487-587503DBB18D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD6BC19C-3A0C-417D-9487-587503DBB18D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC146042-25F8-4B86-A888-662B87DECAF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC146042-25F8-4B86-A888-662B87DECAF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC146042-25F8-4B86-A888-662B87DECAF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC146042-25F8-4B86-A888-662B87DECAF1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
