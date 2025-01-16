@@ -16,4 +16,8 @@
     </Reference>
   </ItemGroup>
 
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="if &quot;$(ConfigurationName)&quot; == &quot;Release&quot; (&#xD;&#xA;    copy &quot;$(TargetDir)\*.dll&quot; &quot;E:\code\libs\&quot;&#xD;&#xA;)&#xD;&#xA;if &quot;$(ConfigurationName)&quot; == &quot;Debug&quot; (&#xD;&#xA;    echo &quot;DEBUG: Not copying lib&quot;&#xD;&#xA;)" />
+  </Target>
+
 </Project>
