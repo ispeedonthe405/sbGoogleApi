@@ -114,40 +114,34 @@ namespace sbGoogleApi.Sheets
                     return;
                 }
 
-                // Pass 1: column names from sheet row 0
+                // Pass 1: columns
                 var row0 = Data.RowData[0];
-                foreach (var value in row0.Values)
-                {
-                    ExtendedValue ev = value.EffectiveValue;
-                    Table.Columns.Add(ev.StringValue);
-                }
-
-                // Pass 2: column data types from sheet row 1
                 var row1 = Data.RowData[1];
                 for (int i = 0; i < row1.Values.Count; i++)
                 {
+                    ExtendedValue ev_header = row0.Values[i].EffectiveValue;
                     ExtendedValue ev = row1.Values[i].EffectiveValue;
-                    DataColumn column = Table.Columns[i];
 
                     if (ev.BoolValue is not null)
                     {
-                        column.DataType = typeof(bool);
+                        Table.Columns.Add(ev_header.StringValue, typeof(bool));
                     }
                     else if (ev.NumberValue is not null)
                     {
-                        column.DataType = typeof(double);
+                        Table.Columns.Add(ev_header.StringValue, typeof(double));
                     }
                     else if (ev.StringValue is not null)
                     {
-                        column.DataType = typeof(string);
+                        Table.Columns.Add(ev_header.StringValue, typeof(string));
                     }
                     else
                     {
+                        Table.Columns.Add(ev_header.StringValue, typeof(object));
                         Logger.Warning($"Data type of column {i} is not accounted for. Defaulting to object");
                     }
                 }
                 
-                // Pass 3: DataRows from sheet rows
+                // Pass 2: DataRows from sheet rows
                 for (int i = 1; i < Data.RowData.Count; i++)
                 {
                     var grow = Data.RowData[i].Values;
@@ -174,7 +168,7 @@ namespace sbGoogleApi.Sheets
                     Table.Rows.Add([.. values]);
                 }
 
-                View = Table.DefaultView;
+                View = Table.AsDataView();
             }
             catch (Exception ex)
             {
