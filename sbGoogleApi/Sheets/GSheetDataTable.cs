@@ -7,7 +7,12 @@ using System.Runtime.CompilerServices;
 namespace sbGoogleApi.Sheets
 {
     /// <summary>
-    /// Parses a Grid-type Google Sheet into a Data Table
+    /// Parses a Grid-type Google Sheet into a DataTable.
+    /// The View property is for databinding. Additional views
+    /// can also be made from the DataTable Table property.
+    /// Assumptions: 
+    /// - The sheet in question has a header row of column names
+    /// - Data rows are consistent in their types, per column
     /// </summary>
     public class GSheetDataTable : INotifyPropertyChanged
     {
@@ -166,7 +171,7 @@ namespace sbGoogleApi.Sheets
                             values.Add(value.EffectiveValue.ToString());
                         }
                     }
-                    Table.Rows.Add(values.ToArray());
+                    Table.Rows.Add([.. values]);
                 }
 
                 View = Table.DefaultView;
